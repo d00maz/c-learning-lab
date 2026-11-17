@@ -1,95 +1,62 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>C Learning Lab</title>
-    <meta name="description" content="A complete C learning web app from beginner fundamentals to pointer and memory management mastery." />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="A structured, hands-on C programming course with lessons, exercises, progress tracking, and trusted references." />
+    <meta name="theme-color" content="#07141f" />
+    <title>C Learning Lab — Learn C by building</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
   </head>
   <body>
     <header class="topbar">
-      <div class="container nav-wrap">
-        <a class="brand" href="#top" aria-label="C Learning Lab home"><span class="brand-mark">C</span><span>Learning Lab</span></a>
-        <nav class="nav" aria-label="Main navigation">
-          <a href="#path">Path</a><a href="#explorer">Concept Explorer</a><a href="#memory">Memory</a><a href="#resources">Resources</a><a href="#quiz">Quiz</a>
-        </nav>
+      <a class="brand" href="#home" aria-label="C Learning Lab home"><span class="brand-icon">C</span><span>C Learning Lab</span></a>
+      <div class="topbar-right">
+        <span class="progress-label" id="progress-label">0 of 0 lessons complete</span>
+        <a class="header-link" href="#references">References</a>
       </div>
     </header>
-    <main id="top">
-      <section class="hero">
-        <div class="container hero-grid">
-          <div class="hero-copy">
-            <p class="eyebrow">From zero to systems-level C</p>
-            <h1>Learn C like a real programmer.</h1>
-            <p class="lead">A hands-on learning path combining fundamentals, memory, standard library practice, debugging, and the mistakes experienced programmers avoid.</p>
-            <div class="hero-actions"><a class="button primary" href="#path">Start the path</a><a class="button secondary" href="#explorer">Explore concepts</a></div>
-            <ul class="pill-list"><li>Zero to beginner</li><li>Memory &amp; pointers</li><li>Standard library</li><li>Safe practices</li></ul>
-          </div>
-          <div class="hero-panel">
-            <div class="panel-window"><div class="window-bar"><span></span><span></span><span></span></div><pre><code>#include &lt;stdio.h&gt;
 
-int main(void) {
-    int age = 23;
-    int *p = &amp;age;
-    printf("Age: %d\\n", *p);
-    return 0;
-}</code></pre></div>
-            <div class="stats-grid"><div><strong>7</strong><span>Learning stages</span></div><div><strong>25+</strong><span>Examples &amp; prompts</span></div><div><strong>12</strong><span>Safety habits</span></div></div>
-          </div>
+    <main id="home" class="app-layout">
+      <aside class="sidebar" aria-label="Course navigation">
+        <div class="sidebar-intro">
+          <p class="eyebrow">Your curriculum</p>
+          <h1>Learn C<br /><span>from first principles.</span></h1>
+          <p class="sidebar-copy">A practical path from your first program to reliable systems code.</p>
         </div>
+        <div class="progress-track" aria-label="Course progress"><span id="progress-bar"></span></div>
+        <label class="search-label" for="lesson-search">Find a lesson</label>
+        <input id="lesson-search" class="search-input" type="search" placeholder="Try ‘pointer’" autocomplete="off" />
+        <nav id="module-list" class="module-list" aria-label="Lessons"></nav>
+        <p id="search-empty" class="search-empty" hidden>No matching lessons.</p>
+        <div class="sidebar-foot"><span class="status-dot"></span> Progress saves in this browser</div>
+      </aside>
+
+      <section class="workspace" aria-label="Course lesson">
+        <div class="workspace-topline">
+          <span id="breadcrumb">Getting started</span>
+          <span class="course-standard">C17 · portable fundamentals</span>
+        </div>
+        <article id="lesson-content" class="lesson-content" aria-live="polite"></article>
       </section>
-      <section id="path" class="section"><div class="container">
-        <div class="section-heading"><p class="eyebrow">Your roadmap</p><h2>Build knowledge in the right order.</h2><p class="section-intro">Work through each stage, write the code yourself, then use the reference links when you need the exact language or library details.</p></div>
-        <div class="path-grid">
-          <article class="path-card"><span class="path-step">01</span><h3>Foundations</h3><p>Compilation, variables, types, expressions, conditions, loops, functions, and scope.</p><span class="level">Start here · 5 lessons</span></article>
-          <article class="path-card"><span class="path-step">02</span><h3>Arrays &amp; strings</h3><p>Contiguous storage, indexing, character arrays, null terminators, and bounds.</p><span class="level">Core skills · 4 lessons</span></article>
-          <article class="path-card"><span class="path-step">03</span><h3>Pointers</h3><p>Addresses, indirection, pointer parameters, array decay, and pointer validity.</p><span class="level">Core skills · 5 lessons</span></article>
-          <article class="path-card"><span class="path-step">04</span><h3>Memory ownership</h3><p>Stack and static storage, heap allocation, object lifetime, cleanup, and failure paths.</p><span class="level">Intermediate · 5 lessons</span></article>
-          <article class="path-card"><span class="path-step">05</span><h3>Data &amp; interfaces</h3><p>Structs, enums, header files, multiple translation units, and API design.</p><span class="level">Intermediate · 4 lessons</span></article>
-          <article class="path-card"><span class="path-step">06</span><h3>Libraries &amp; files</h3><p>stdio, stdlib, string, ctype, errno, math, file streams, and robust error handling.</p><span class="level">Applied C · 5 lessons</span></article>
-          <article class="path-card"><span class="path-step">07</span><h3>Advanced practice</h3><p>Build tools, debug with sanitizers, reason about undefined behavior, and profile.</p><span class="level">Advanced · projects</span></article>
-        </div>
-      </div></section>
-      <section id="explorer" class="section accent"><div class="container">
-        <div class="section-heading"><p class="eyebrow">Learn by exploring</p><h2>One concept, one example, one important habit.</h2><p class="section-intro">Choose a topic. Read the explanation, study the code, then change it and predict what will happen.</p></div>
-        <div class="explorer-layout"><div class="explorer-tabs" id="concept-tabs" role="tablist" aria-label="C concepts"></div><article class="concept-card" id="concept-panel" aria-live="polite"></article></div>
-      </div></section>
-      <section id="memory" class="section"><div class="container">
-        <div class="section-heading"><p class="eyebrow">Make memory concrete</p><h2>Follow a value from name to address.</h2><p class="section-intro">This simplified diagram is a mental model, not a promise about exact machine layout or compiler behavior.</p></div>
-        <div class="memory-layout"><div class="memory-panel"><div class="diagram-header"><h3>Storage model</h3><div class="diagram-actions"><button class="button small" data-memory="stack" aria-pressed="true">Automatic storage</button><button class="button small secondary" data-memory="heap" aria-pressed="false">Allocated storage</button></div></div><div id="memory-diagram" class="memory-diagram" aria-live="polite"></div></div>
-          <div class="memory-explanation"><h3>Lifetime is the key</h3><p>A pointer is an object that stores a reference to another object. Before dereferencing it, make sure the pointed-to object still exists and is valid.</p><div class="code-box"><pre><code>int x = 42;
-int *p = &amp;x;
-printf("x=%d\\n", *p);</code></pre></div><ul><li><strong>Automatic storage:</strong> commonly local variables; lifetime ends when execution leaves their block.</li><li><strong>Allocated storage:</strong> request with <code>malloc</code>/<code>calloc</code>; release with <code>free</code>.</li><li><strong>Habit:</strong> decide who owns an allocation and who is responsible for freeing it.</li></ul></div>
-        </div>
-      </div></section>
-      <section class="section accent-2"><div class="container">
-        <div class="section-heading"><p class="eyebrow">Active practice</p><h2>Try a challenge before asking for a hint.</h2><p class="section-intro">Write and compile each solution locally. These prompts are deliberately small: practice one skill at a time.</p></div>
-        <div class="challenge-grid">
-          <article class="challenge-card"><span class="challenge-tag">Beginner</span><h3>Format a report</h3><p>Print an integer count and a floating-point average with labels and two digits after the decimal point.</p><button class="button secondary small" data-challenge="format">Reveal hint</button></article>
-          <article class="challenge-card"><span class="challenge-tag">Intermediate</span><h3>Classify characters</h3><p>Walk through a string and count letters, digits, and whitespace using the ctype library.</p><button class="button secondary small" data-challenge="count">Reveal hint</button></article>
-          <article class="challenge-card"><span class="challenge-tag">Memory practice</span><h3>Grow a number list</h3><p>Allocate an integer array, check the allocation, populate it, use it, and release it on every exit path.</p><button class="button secondary small" data-challenge="dynamic">Reveal hint</button></article>
-        </div>
-      </div></section>
-      <section id="resources" class="section"><div class="container">
-        <div class="section-heading"><p class="eyebrow">Library field guide</p><h2>Know where to look things up.</h2><p class="section-intro">Prefer standard references and manual pages over guessing. Check which C standard and platform your compiler targets.</p></div>
-        <div class="resource-grid">
-          <article class="library-card"><h3><code>&lt;stdio.h&gt;</code></h3><p>Formatted I/O, streams, files, and functions such as <code>printf</code>, <code>fgets</code>, <code>fopen</code>, and <code>fclose</code>.</p></article>
-          <article class="library-card"><h3><code>&lt;stdlib.h&gt;</code></h3><p>Allocation (<code>malloc</code>, <code>free</code>), conversions, sorting, and process utilities.</p></article>
-          <article class="library-card"><h3><code>&lt;string.h&gt;</code></h3><p>Byte-string operations. Know destination capacity and null-termination requirements.</p></article>
-          <article class="library-card"><h3><code>&lt;ctype.h&gt;</code></h3><p>Character classification and case conversion. Pass <code>EOF</code> or a value representable as <code>unsigned char</code>.</p></article>
-          <article class="library-card"><h3><code>&lt;errno.h&gt;</code></h3><p>Error reporting support. Check each function's documentation for its error-reporting contract.</p></article>
-          <article class="library-card"><h3><code>&lt;math.h&gt;</code></h3><p>Common mathematical functions. Some toolchains require linking the math library explicitly.</p></article>
-        </div>
-        <div class="manuals"><article class="manual-card"><h3>Trusted references</h3><ul><li><a href="https://en.cppreference.com/w/c" target="_blank" rel="noreferrer">cppreference — C language and library reference</a></li><li><a href="https://www.gnu.org/software/libc/manual/html_node/" target="_blank" rel="noreferrer">GNU C Library Manual</a></li><li><a href="https://man7.org/linux/man-pages/" target="_blank" rel="noreferrer">Linux man-pages project</a></li><li><a href="https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf" target="_blank" rel="noreferrer">WG14 N1570 — public C11 committee draft</a></li><li><a href="https://www.iso.org/standard/74528.html" target="_blank" rel="noreferrer">ISO/IEC 9899:2024 — C23 standard listing</a></li></ul><p class="source-note">N1570 is a committee draft, not the published ISO standard. Platform manuals describe platform behavior; they do not replace the language standard.</p></article>
-          <article class="manual-card"><h3>Good habits beat clever tricks</h3><div class="todo-stack"><div class="todo good"><strong>Do</strong><p>Initialize objects, check return values, validate input, and keep ownership and cleanup clear.</p></div><div class="todo bad"><strong>Avoid</strong><p>Out-of-bounds access, uninitialized reads, dangling pointers, unchecked input, and assuming undefined behavior is predictable.</p></div></div></article></div>
-      </div></section>
-      <section id="quiz" class="section accent"><div class="container quiz-wrap"><div class="section-heading"><p class="eyebrow">Retrieval practice</p><h2>Check what you understand.</h2><p class="section-intro">Answer a question, get immediate feedback, and continue through the short review set.</p></div><div class="quiz-card"><div id="quiz-progress" class="quiz-progress"></div><div id="quiz-question" class="quiz-question"></div><div id="quiz-options" class="quiz-options"></div><div id="quiz-feedback" class="quiz-feedback" aria-live="polite"></div><button id="quiz-next" class="button primary" hidden>Next question</button></div></div></section>
     </main>
-    <footer class="footer"><div class="container footer-wrap"><p>C Learning Lab · Learn the rules, practice the habits, and always verify with a trusted reference.</p></div></footer>
-    <script src="script.js"></script>
+
+    <footer id="references" class="references">
+      <div class="references-inner">
+        <div><p class="eyebrow">Keep learning</p><h2>Check reliable references.</h2><p>Examples here are teaching material. Verify details against the C version and platform you target.</p></div>
+        <ul>
+          <li><a href="https://en.cppreference.com/w/c" target="_blank" rel="noopener noreferrer">cppreference — C language and library</a></li>
+          <li><a href="https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf" target="_blank" rel="noopener noreferrer">WG14 N1570 — public C11 draft</a></li>
+          <li><a href="https://www.gnu.org/software/libc/manual/html_node/" target="_blank" rel="noopener noreferrer">GNU C Library manual</a></li>
+          <li><a href="https://man7.org/linux/man-pages/" target="_blank" rel="noopener noreferrer">Linux man-pages project</a></li>
+          <li><a href="https://wiki.sei.cmu.edu/confluence/display/c/SEI+CERT+C+Coding+Standard" target="_blank" rel="noopener noreferrer">SEI CERT C Coding Standard</a></li>
+        </ul>
+        <p class="reference-note">N1570 is a committee draft, not the published ISO C standard. Linux and GNU manuals document platform-specific behavior.</p>
+      </div>
+    </footer>
   </body>
 </html>

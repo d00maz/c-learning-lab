@@ -1,163 +1,94 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>C Learning Lab | Course App</title>
-    <meta name="description" content="A full C learning platform covering compilation, memory, pointers, libraries, debugging, and safe programming practices." />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <header class="topbar">
-      <div class="container nav-wrap">
-        <a href="#top" class="brand" aria-label="C Learning Lab home">
-          <span class="brand-mark">C</span>
-          <span>C Learning Lab</span>
-        </a>
-        <nav class="nav" aria-label="Main navigation">
-          <a href="#course">Course</a>
-          <a href="#mistakes">Mistakes</a>
-          <a href="#library">Library</a>
-          <a href="#quizzes">Quiz</a>
-        </nav>
-      </div>
-    </header>
-
-    <main class="page-shell" id="top">
-      <aside class="sidebar">
-        <div class="sidebar-header">
-          <p class="eyebrow small">Curriculum</p>
-          <h2>Learn C</h2>
-        </div>
-        <div id="module-list" class="module-list" aria-label="Module navigation"></div>
-      </aside>
-
-      <div class="main-panel">
-        <section class="hero-card">
-          <div>
-            <p class="eyebrow">From zero to expert systems programmer</p>
-            <h1>Learn C by understanding the machine, not just syntax.</h1>
-          </div>
-          <div class="hero-meta">
-            <span>34 exercises</span>
-            <span>9 stages</span>
-            <span>Standards + manuals</span>
-          </div>
-        </section>
-
-        <section id="course" class="content-panel">
-          <div id="module-content" aria-live="polite"></div>
-        </section>
-
-        <section id="mistakes" class="section-card">
-          <div class="section-head">
-            <p class="eyebrow">Mistakes library</p>
-            <h2>Common bugs and how professionals avoid them</h2>
-          </div>
-
-          <div class="mistake-grid">
-            <article class="mistake-card bad">
-              <h3>Uninitialized read</h3>
-              <pre><code>int x;
-printf("%d\\n", x);</code></pre>
-              <p>Reading a variable before assignment is undefined behavior. Always initialize local variables.</p>
-            </article>
-            <article class="mistake-card bad">
-              <h3>Buffer overflow</h3>
-              <pre><code>char name[8];
-strcpy(name, "longer-than-expected");</code></pre>
-              <p>String functions without size checks can overwrite adjacent memory. Use bounded functions and capacity checks.</p>
-            </article>
-            <article class="mistake-card bad">
-              <h3>Use-after-free</h3>
-              <pre><code>int *p = malloc(sizeof *p);
-free(p);
-printf("%d\\n", *p);</code></pre>
-              <p>Once freed, the pointer is stale. Keep ownership rules explicit and do not use it afterwards.</p>
-            </article>
-            <article class="mistake-card good">
-              <h3>Safe pattern</h3>
-              <pre><code>int *p = malloc(sizeof *p);
-if (!p) return 1;
-*p = 42;
-free(p);
-p = NULL;</code></pre>
-              <p>Check allocation, use it, free once, then null the pointer to prevent accidental reuse.</p>
-            </article>
-          </div>
-        </section>
-
-        <section id="library" class="section-card">
-          <div class="section-head">
-            <p class="eyebrow">Reference stack</p>
-            <h2>Use the manuals with the code</h2>
-          </div>
-
-          <div class="resource-grid">
-            <article class="resource-card">
-              <h3>stdio.h</h3>
-              <p>File streams, stdout, stderr, printf, scanf, fgets, fopen, fwrite, and error reporting.</p>
-            </article>
-            <article class="resource-card">
-              <h3>stdlib.h</h3>
-              <p>malloc, calloc, realloc, free, exit, qsort, atoi, atof, and memory-related helpers.</p>
-            </article>
-            <article class="resource-card">
-              <h3>string.h</h3>
-              <p>strcpy, strlen, strcmp, memcpy, memmove, memset. Always check bounds and null-termination.</p>
-            </article>
-            <article class="resource-card">
-              <h3>ctype.h</h3>
-              <p>Character classification and case conversion. Perfect for parsing and validation.</p>
-            </article>
-            <article class="resource-card">
-              <h3>errno.h</h3>
-              <p>errno, perror, strerror, and status checks after library and system calls.</p>
-            </article>
-            <article class="resource-card">
-              <h3>math.h</h3>
-              <p>Trig, exponentials, logs, sqrt, and floating-point operations. Some toolchains need explicit linking.</p>
-            </article>
-          </div>
-
-          <div class="links-box">
-            <h3>Proven sources</h3>
-            <ul>
-              <li><a href="https://en.cppreference.com/w/c" target="_blank" rel="noreferrer">cppreference C reference</a></li>
-              <li><a href="https://www.gnu.org/software/libc/manual/html_node/" target="_blank" rel="noreferrer">GNU libc manual</a></li>
-              <li><a href="https://man7.org/linux/man-pages/" target="_blank" rel="noreferrer">Linux manual pages</a></li>
-              <li><a href="https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf" target="_blank" rel="noreferrer">C11 draft N1570</a></li>
-              <li><a href="https://www.amazon.com/Programming-Language-2nd-Brian-Kernighan/dp/0131103628" target="_blank" rel="noreferrer">The C Programming Language</a></li>
-            </ul>
-          </div>
-        </section>
-
-        <section id="quizzes" class="section-card">
-          <div class="section-head">
-            <p class="eyebrow">Check yourself</p>
-            <h2>Short mastery checks</h2>
-          </div>
-
-          <div class="quiz-card">
-            <div id="quiz-progress" class="quiz-progress"></div>
-            <div id="quiz-question" class="quiz-question"></div>
-            <div id="quiz-options" class="quiz-options"></div>
-            <div id="quiz-feedback" class="quiz-feedback" aria-live="polite"></div>
-            <button id="quiz-next" class="button primary" hidden>Next question</button>
-          </div>
-        </section>
-      </div>
-    </main>
-
-    <footer class="footer">
-      <div class="container footer-wrap">
-        <p>Learn the rules, compile the code, and check the references.</p>
-      </div>
-    </footer>
-
-    <script src="script.js"></script>
-  </body>
-</html>
+:root {
+  color-scheme: dark;
+  --page: #07141f;
+  --surface: #0c1d29;
+  --surface-raised: #102634;
+  --surface-code: #06121b;
+  --text: #e8f4fa;
+  --muted: #9eb4c2;
+  --line: rgba(159, 195, 216, .16);
+  --cyan: #66d8f6;
+  --mint: #83e7bd;
+  --amber: #ffce75;
+  --red: #ff8989;
+  --radius: 16px;
+  font-family: "DM Sans", system-ui, sans-serif;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 85px; }
+body { margin: 0; min-width: 320px; background: var(--page); color: var(--text); line-height: 1.65; }
+button, input { font: inherit; }
+a { color: inherit; }
+code, pre { font-family: "JetBrains Mono", ui-monospace, monospace; }
+:focus-visible { outline: 3px solid var(--cyan); outline-offset: 3px; }
+.topbar { position: sticky; top: 0; z-index: 5; min-height: 66px; padding: 0 3vw; display: flex; align-items: center; justify-content: space-between; gap: 1rem; border-bottom: 1px solid var(--line); background: rgba(7, 20, 31, .94); backdrop-filter: blur(12px); }
+.brand { display: inline-flex; align-items: center; gap: .7rem; font-weight: 800; text-decoration: none; }
+.brand-icon { width: 34px; height: 34px; display: grid; place-items: center; border-radius: 10px; background: linear-gradient(140deg, var(--cyan), var(--mint)); color: #07141f; }
+.topbar-right { display: flex; align-items: center; gap: 1.2rem; color: var(--muted); font-size: .85rem; }
+.header-link { color: var(--cyan); text-decoration: none; }
+.app-layout { width: min(1500px, 100%); margin: 0 auto; padding: 24px; display: grid; grid-template-columns: 300px minmax(0, 1fr); gap: 22px; align-items: start; }
+.sidebar { position: sticky; top: 88px; max-height: calc(100vh - 110px); overflow-y: auto; padding: 20px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); }
+.eyebrow { margin: 0 0 .45rem; color: var(--mint); font-size: .72rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+.sidebar-intro h1 { margin: 0; font-size: 1.55rem; line-height: 1.2; letter-spacing: -.04em; }
+.sidebar-intro h1 span { color: var(--cyan); }
+.sidebar-copy { margin: .65rem 0 1.1rem; color: var(--muted); font-size: .9rem; }
+.progress-track { height: 6px; margin: .9rem 0 1.1rem; overflow: hidden; border-radius: 9px; background: rgba(255,255,255,.08); }
+.progress-track span { display: block; width: 0; height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--cyan), var(--mint)); transition: width .25s ease; }
+.search-label { display: block; margin-bottom: .35rem; color: var(--muted); font-size: .78rem; font-weight: 700; }
+.search-input { width: 100%; padding: .62rem .72rem; border: 1px solid var(--line); border-radius: 9px; background: var(--surface-code); color: var(--text); }
+.module-list { display: grid; gap: .45rem; margin-top: 1rem; }
+.module-group-title { margin: .85rem 0 .2rem; color: var(--muted); font-size: .68rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+.lesson-link { display: grid; grid-template-columns: 25px 1fr auto; align-items: center; gap: .55rem; width: 100%; padding: .62rem .55rem; border: 1px solid transparent; border-radius: 10px; background: transparent; color: var(--text); text-align: left; cursor: pointer; }
+.lesson-link:hover { background: rgba(255,255,255,.035); }
+.lesson-link[aria-current="page"] { border-color: rgba(102,216,246,.32); background: rgba(102,216,246,.08); }
+.lesson-number { color: var(--muted); font: .72rem "JetBrains Mono", monospace; }
+.lesson-link-title { font-size: .84rem; font-weight: 650; }
+.lesson-check { color: var(--mint); font-size: .78rem; }
+.search-empty { color: var(--muted); font-size: .85rem; }
+.sidebar-foot { margin-top: 1rem; padding-top: .8rem; border-top: 1px solid var(--line); color: var(--muted); font-size: .72rem; }
+.status-dot { display: inline-block; width: 7px; height: 7px; margin-right: .4rem; border-radius: 50%; background: var(--mint); }
+.workspace { min-width: 0; }
+.workspace-topline { display: flex; justify-content: space-between; gap: 1rem; margin: 4px 3px 12px; color: var(--muted); font-size: .78rem; }
+.course-standard { color: var(--cyan); }
+.lesson-content { min-height: 70vh; padding: clamp(20px, 4vw, 46px); border: 1px solid var(--line); border-radius: var(--radius); background: linear-gradient(145deg, rgba(16,38,52,.96), rgba(10,27,38,.96)); }
+.lesson-kicker { color: var(--mint); font-size: .76rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+.lesson-title { margin: .25rem 0 .5rem; font-size: clamp(2rem, 4vw, 3.25rem); letter-spacing: -.055em; line-height: 1.1; }
+.lesson-summary { max-width: 75ch; margin: 0; color: var(--muted); font-size: 1.08rem; }
+.lesson-meta { display: flex; flex-wrap: wrap; gap: .55rem; margin: 1.1rem 0 1.5rem; }
+.meta-chip { padding: .3rem .6rem; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); font-size: .72rem; }
+.lesson-section { margin-top: 1.6rem; }
+.lesson-section h3 { margin: 0 0 .55rem; font-size: 1.1rem; }
+.lesson-section p { color: var(--muted); }
+.objectives { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .55rem; margin: .8rem 0 0; padding: 0; list-style: none; }
+.objectives li { padding: .65rem .75rem; border: 1px solid var(--line); border-radius: 10px; color: var(--muted); font-size: .86rem; }
+.objectives li::before { content: "✓ "; color: var(--mint); font-weight: 800; }
+.explanation { max-width: 82ch; }
+.code-panel { position: relative; margin: .7rem 0; border: 1px solid var(--line); border-radius: 12px; background: var(--surface-code); overflow: hidden; }
+.code-panel pre { margin: 0; padding: 1.1rem; overflow-x: auto; color: #d7eff8; font-size: .83rem; line-height: 1.75; tab-size: 4; }
+.code-caption { padding: .5rem .85rem; border-bottom: 1px solid var(--line); color: var(--muted); font-size: .72rem; }
+.callout { margin: 1rem 0; padding: .9rem 1rem; border-left: 3px solid var(--cyan); border-radius: 0 10px 10px 0; background: rgba(102,216,246,.06); }
+.callout.warning { border-color: var(--amber); background: rgba(255,206,117,.06); }
+.callout p { margin: .2rem 0 0; color: var(--muted); }
+.exercise { padding: 1rem; border: 1px solid rgba(131,231,189,.2); border-radius: 12px; background: rgba(131,231,189,.045); }
+.exercise h3 { margin-top: 0; }
+.exercise p { color: var(--muted); }
+.hint-toggle, .solution-toggle, .lesson-nav button, .complete-button, .reset-button { border: 1px solid var(--line); border-radius: 9px; padding: .55rem .8rem; background: rgba(255,255,255,.03); color: var(--text); font-weight: 700; cursor: pointer; }
+.hint-toggle:hover, .solution-toggle:hover, .lesson-nav button:hover, .reset-button:hover { border-color: rgba(102,216,246,.5); }
+.hint-content, .solution-content { margin-top: .75rem; padding: .8rem; border-radius: 9px; background: rgba(0,0,0,.2); color: var(--muted); }
+.lesson-nav { display: flex; justify-content: space-between; gap: .75rem; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid var(--line); }
+.lesson-nav button:disabled { opacity: .4; cursor: not-allowed; }
+.complete-button { border-color: transparent; background: linear-gradient(135deg, var(--cyan), var(--mint)); color: #07141f; }
+.complete-button.is-complete { border-color: rgba(131,231,189,.35); background: rgba(131,231,189,.1); color: var(--mint); }
+.lesson-sources { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: .8rem; }
+.lesson-sources a { color: var(--cyan); font-size: .82rem; }
+.references { border-top: 1px solid var(--line); background: #06111a; }
+.references-inner { width: min(1100px, calc(100% - 36px)); margin: auto; padding: 44px 0; display: grid; grid-template-columns: 1fr 1fr; gap: 1rem 3rem; }
+.references h2 { margin: 0; font-size: 1.7rem; }
+.references p { color: var(--muted); }
+.references ul { margin: 0; padding-left: 1.2rem; }
+.references li { margin: .35rem 0; }
+.references a { color: var(--cyan); }
+.reference-note { grid-column: 1 / -1; margin: 0; font-size: .78rem; }
+@media (max-width: 900px) { .app-layout { grid-template-columns: 1fr; padding: 14px; } .sidebar { position: static; max-height: none; } .module-list { grid-template-columns: repeat(2, minmax(0, 1fr)); } .module-group-title { grid-column: 1 / -1; } .lesson-link { align-content: start; } }
+@media (max-width: 600px) { .topbar { padding: 0 14px; } .topbar-right { gap: .55rem; font-size: .7rem; } .header-link { display: none; } .module-list, .objectives, .references-inner { grid-template-columns: 1fr; } .workspace-topline { font-size: .68rem; } .lesson-content { padding: 20px 16px; } .lesson-nav { flex-wrap: wrap; } .lesson-nav button { flex: 1; } .reference-note { grid-column: auto; } }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; } }
