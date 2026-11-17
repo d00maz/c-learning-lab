@@ -1,1 +1,372 @@
-:root{--bg:#07141f;--panel:#102534;--ink:#e8f3ff;--muted:#aac2d8;--accent:#56d4ff;--mint:#7ef0c2;--warning:#ffc857;--danger:#ff8585;--line:rgba(152,201,240,.18);--shadow:0 20px 50px rgba(0,0,0,.2);--radius:20px}*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:82px}body{margin:0;font:16px/1.65 Inter,system-ui,sans-serif;background:linear-gradient(180deg,#040d15,#081922 30%,#0b1d2a);color:var(--ink)}a{color:inherit}button{font:inherit}.container{width:min(1160px,calc(100% - 36px));margin:auto}.topbar{position:sticky;top:0;z-index:10;backdrop-filter:blur(14px);background:rgba(8,22,31,.88);border-bottom:1px solid var(--line)}.nav-wrap{display:flex;align-items:center;justify-content:space-between;min-height:70px;gap:1rem}.brand{display:flex;align-items:center;gap:.7rem;text-decoration:none;font-weight:800}.brand-mark{display:grid;place-items:center;width:36px;height:36px;border-radius:11px;background:linear-gradient(135deg,var(--accent),var(--mint));color:#07141f;font-weight:900}.nav{display:flex;gap:1.15rem;flex-wrap:wrap}.nav a{text-decoration:none;color:var(--muted);font-size:.92rem}.nav a:hover,.manual-card a:hover{color:var(--accent)}.hero{padding:76px 0 42px}.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:2rem;align-items:center}.eyebrow{margin:0 0 .7rem;color:var(--mint);font-size:.8rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase}.hero h1{max-width:720px;margin:0;font-size:clamp(2.7rem,6vw,4.7rem);line-height:1.04;letter-spacing:-.06em}.lead{max-width:62ch;margin:1.25rem 0 0;color:var(--muted);font-size:1.08rem}.hero-actions{display:flex;flex-wrap:wrap;gap:.85rem;margin-top:1.7rem}.button{display:inline-flex;align-items:center;justify-content:center;appearance:none;border:1px solid transparent;border-radius:12px;padding:.78rem 1.1rem;font-weight:750;cursor:pointer;text-decoration:none;transition:transform .18s,background .18s,border-color .18s}.button:hover{transform:translateY(-1px)}.button:focus-visible,.topic-btn:focus-visible,.quiz-option:focus-visible,a:focus-visible{outline:3px solid var(--accent);outline-offset:3px}.button.primary{background:linear-gradient(135deg,var(--accent),var(--mint));color:#061823}.button.secondary{background:rgba(255,255,255,.025);border-color:var(--line);color:var(--ink)}.button.small{padding:.52rem .75rem;font-size:.82rem}.pill-list{display:flex;flex-wrap:wrap;gap:.6rem;margin:1.4rem 0 0;padding:0;list-style:none;color:var(--muted)}.pill-list li{border:1px solid rgba(126,240,194,.2);background:rgba(126,240,194,.06);border-radius:999px;padding:.35rem .7rem;font-size:.84rem}.hero-panel,.path-card,.library-card,.challenge-card,.quiz-card,.manual-card,.concept-card,.memory-panel,.memory-explanation{background:rgba(11,26,34,.86);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}.hero-panel{padding:1rem}.panel-window{border-radius:15px;background:#071b26;border:1px solid var(--line);overflow:hidden}.window-bar{display:flex;gap:.5rem;padding:.8rem 1rem;background:rgba(255,255,255,.025);border-bottom:1px solid var(--line)}.window-bar span{width:11px;height:11px;border-radius:50%;background:#ff5f57}.window-bar span:nth-child(2){background:#febc2e}.window-bar span:nth-child(3){background:#28c840}pre,code{font-family:"JetBrains Mono",ui-monospace,monospace}.panel-window pre,.concept-card pre,.code-box pre{margin:0;padding:1.1rem;overflow:auto;font-size:.86rem;line-height:1.7;color:#d9f3ff}.stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.7rem;margin-top:.85rem}.stats-grid>div{padding:.7rem .4rem;border:1px solid var(--line);border-radius:13px;text-align:center}.stats-grid strong{display:block;color:var(--mint);font-size:1.35rem}.stats-grid span{color:var(--muted);font-size:.78rem}.section{padding:88px 0}.accent,.accent-2{background:rgba(6,22,31,.55);border-block:1px solid var(--line)}.section-heading{max-width:800px;margin-bottom:1.8rem}.section-heading h2{margin:0;font-size:clamp(2rem,4vw,3rem);line-height:1.15;letter-spacing:-.045em}.section-intro{max-width:70ch;margin:.7rem 0 0;color:var(--muted)}.path-grid,.resource-grid,.challenge-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}.path-card,.library-card,.challenge-card{padding:1.2rem}.path-step{display:inline-grid;place-items:center;width:46px;height:46px;border-radius:13px;background:rgba(86,212,255,.12);border:1px solid rgba(86,212,255,.24);font-weight:850;color:var(--accent)}.path-card h3,.library-card h3,.challenge-card h3,.manual-card h3,.memory-explanation h3,.memory-panel h3,.concept-card h3{margin:.85rem 0 .4rem;font-size:1.18rem}.path-card p,.library-card p,.challenge-card p,.manual-card p,.memory-explanation p,.concept-card p{margin:0;color:var(--muted)}.level{display:inline-block;margin-top:.85rem;color:var(--mint);font-size:.8rem;font-weight:700}.explorer-layout{display:grid;grid-template-columns:230px 1fr;gap:1rem}.explorer-tabs{display:flex;flex-direction:column;gap:.6rem}.topic-btn{border:1px solid var(--line);border-radius:12px;background:rgba(255,255,255,.02);color:var(--ink);padding:.8rem .9rem;text-align:left;cursor:pointer}.topic-btn.is-active{border-color:rgba(86,212,255,.55);background:rgba(86,212,255,.09)}.concept-card{padding:1.35rem}.concept-card h3{margin-top:0;font-size:1.5rem}.example{margin:1rem 0;background:#071b26;border:1px solid var(--line);border-radius:15px;overflow:hidden}.concept-card .takeaway{padding:.85rem 1rem;border-left:3px solid var(--mint);background:rgba(126,240,194,.05);border-radius:0 10px 10px 0;color:var(--muted)}.memory-layout{display:grid;grid-template-columns:1.2fr .8fr;gap:1rem}.memory-panel,.memory-explanation{padding:1.2rem}.diagram-header{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:1rem}.diagram-header h3{margin:0}.diagram-actions{display:flex;gap:.45rem;flex-wrap:wrap}.memory-diagram{display:grid;gap:.75rem;min-height:250px;align-content:center}.memory-row{display:grid;grid-template-columns:140px 1fr;gap:.75rem;align-items:center}.memory-label{font-size:.85rem;color:var(--muted)}.memory-box{position:relative;min-height:52px;display:grid;place-items:center;padding:.7rem;background:rgba(86,212,255,.08);border:1px solid rgba(86,212,255,.3);border-radius:11px;text-align:center;font: .84rem "JetBrains Mono",monospace}.memory-box.heap{background:rgba(126,240,194,.08);border-color:rgba(126,240,194,.3)}.memory-explanation ul{padding-left:1.15rem;color:var(--muted)}.code-box{margin-top:1rem;background:#071b26;border:1px solid var(--line);border-radius:14px;overflow:auto}.challenge-tag{display:inline-block;padding:.28rem .55rem;border-radius:999px;background:rgba(255,200,87,.1);border:1px solid rgba(255,200,87,.25);color:var(--warning);font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.07em}.challenge-card .button{margin-top:1rem}.library-card h3{margin-top:0}.library-card h3 code{color:var(--accent)}.library-card p{font-size:.92rem}.manuals{display:grid;grid-template-columns:1.1fr .9fr;gap:1rem;margin-top:1.2rem}.manual-card{padding:1.2rem}.manual-card h3{margin-top:0}.manual-card ul{margin:0;padding-left:1.2rem;color:var(--muted)}.manual-card li+li{margin-top:.55rem}.manual-card a{color:var(--accent)}.source-note{margin-top:1rem!important;font-size:.82rem}.todo-stack{display:grid;gap:.7rem}.todo{padding:.8rem;border:1px solid var(--line);border-radius:12px}.todo p{margin:.2rem 0 0}.todo.good{background:rgba(126,240,194,.06);border-color:rgba(126,240,194,.24)}.todo.bad{background:rgba(255,133,133,.05);border-color:rgba(255,133,133,.2)}.quiz-wrap{max-width:900px}.quiz-card{padding:1.35rem}.quiz-progress{margin-bottom:.55rem;color:var(--mint);font-size:.82rem;font-weight:750}.quiz-question{margin-bottom:1rem;font-size:clamp(1.25rem,2.4vw,1.8rem);font-weight:750}.quiz-options{display:grid;gap:.65rem}.quiz-option{width:100%;padding:.85rem 1rem;text-align:left;border:1px solid var(--line);border-radius:11px;background:rgba(255,255,255,.02);color:var(--ink);cursor:pointer}.quiz-option:hover:not(:disabled){border-color:rgba(86,212,255,.55);background:rgba(86,212,255,.05)}.quiz-option:disabled{cursor:default;opacity:.8}.quiz-option.correct{border-color:rgba(126,240,194,.6);background:rgba(126,240,194,.08)}.quiz-option.incorrect{border-color:rgba(255,133,133,.5);background:rgba(255,133,133,.06)}.quiz-feedback{min-height:1.7em;margin:.8rem 0;color:var(--muted);font-weight:650}.quiz-feedback.success{color:var(--mint)}.quiz-feedback.error{color:var(--danger)}#quiz-next{margin-top:.2rem}.footer{border-top:1px solid var(--line);background:rgba(6,18,25,.85)}.footer-wrap{padding:1.2rem 0;color:var(--muted);font-size:.9rem}.footer p{margin:0}@media(max-width:900px){.hero-grid,.memory-layout,.manuals{grid-template-columns:1fr}.path-grid,.resource-grid,.challenge-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.nav{gap:.65rem}.nav a{font-size:.82rem}}@media(max-width:650px){.nav{display:none}.hero{padding-top:52px}.section{padding:68px 0}.path-grid,.resource-grid,.challenge-grid,.explorer-layout{grid-template-columns:1fr}.explorer-tabs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.diagram-header{align-items:flex-start;flex-direction:column}.memory-row{grid-template-columns:105px 1fr}.stats-grid span{font-size:.7rem}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important}}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>C Learning Lab | Zero to Expert</title>
+    <meta name="description" content="A serious, interactive C learning web app from basics to memory management, debugging, and safe systems practice." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="container nav-wrap">
+        <a class="brand" href="#top" aria-label="C Learning Lab home">
+          <span class="brand-mark">C</span>
+          <span>Learning Lab</span>
+        </a>
+        <nav class="nav" aria-label="Main navigation">
+          <a href="#path">Roadmap</a>
+          <a href="#explorer">Concepts</a>
+          <a href="#lab">Lab</a>
+          <a href="#memory">Memory</a>
+          <a href="#resources">References</a>
+          <a href="#quiz">Quiz</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="container hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow">From zero to expert systems programmer</p>
+            <h1>Real C, not just documentation.</h1>
+            <p class="lead">
+              This learning site teaches C the way professionals learn it: through the language rules,
+              the standard library, memory behavior, compiler diagnostics, debugging, and the common mistakes
+              that lead to broken programs and undefined behavior.
+            </p>
+            <div class="hero-actions">
+              <a class="button primary" href="#path">Start learning</a>
+              <a class="button secondary" href="#explorer">Explore concepts</a>
+            </div>
+            <ul class="pill-list">
+              <li>Compile &amp; debug</li>
+              <li>Pointers &amp; memory</li>
+              <li>Library and standards</li>
+              <li>Safe habits</li>
+            </ul>
+          </div>
+
+          <div class="hero-panel">
+            <div class="panel-window">
+              <div class="window-bar"><span></span><span></span><span></span></div>
+              <pre><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main(void) {
+    int *numbers = malloc(3 * sizeof *numbers);
+    if (!numbers) {
+        fprintf(stderr, "malloc failed\n");
+        return 1;
+    }
+
+    numbers[0] = 7;
+    numbers[1] = 11;
+    numbers[2] = 13;
+
+    printf("%d %d %d\n", numbers[0], numbers[1], numbers[2]);
+    free(numbers);
+    return 0;
+}</code></pre>
+            </div>
+            <div class="stats-grid">
+              <div><strong>7</strong><span>core stages</span></div>
+              <div><strong>30+</strong><span>examples</span></div>
+              <div><strong>12</strong><span>common traps</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section accent">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">What you will be able to do</p>
+            <h2>From first print to advanced debugging.</h2>
+          </div>
+
+          <div class="info-grid">
+            <article class="mini-card">
+              <h3>Read and fix compiler errors</h3>
+              <p>Learn to compile with warnings, understand diagnostics, and stop treating C like a black box.</p>
+            </article>
+            <article class="mini-card">
+              <h3>Understand the memory model</h3>
+              <p>Reason about stack, static, heap, object lifetime, aliasing, and why UB is dangerous.</p>
+            </article>
+            <article class="mini-card">
+              <h3>Use the standard library correctly</h3>
+              <p>Know when to use stdio, stdlib, string, errno, ctype, math, and how to verify each function contract.</p>
+            </article>
+            <article class="mini-card">
+              <h3>Write safe, testable code</h3>
+              <p>Check bounds, handle errors, free resources, and document ownership and invariants.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="path" class="section">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">Deliberate curriculum</p>
+            <h2>Learn in the order that makes C click.</h2>
+          </div>
+
+          <div class="path-grid">
+            <article class="path-card">
+              <span class="path-step">01</span>
+              <h3>Program structure</h3>
+              <p>Translation units, compilation, headers, main, return values, and build workflows.</p>
+            </article>
+            <article class="path-card">
+              <span class="path-step">02</span>
+              <h3>Types &amp; operators</h3>
+              <p>Integer sizes, floating-point, char, bool-like patterns, casts, precedence, and overflow.</p>
+            </article>
+            <article class="path-card">
+              <span class="path-step">03</span>
+              <h3>Control flow</h3>
+              <p>if, switch, loops, break/continue, and how to design functions that are easy to reason about.</p>
+            </article>
+            <article class="path-card">
+              <span class="path-step">04</span>
+              <h3>Arrays &amp; strings</h3>
+              <p>Indexing, contiguous memory, null-termination, bounds, and why string functions are subtle.</p>
+            </article>
+            <article class="path-card">
+              <span class="path-step">05</span>
+              <h3>Pointers</h3>
+              <p>Address-of, dereference, const-correctness, arrays vs pointers, pointer arithmetic, and aliasing.</p>
+            </article>
+            <article class="path-card">
+              <span class="path-step">06</span>
+              <h3>Memory management</h3>
+              <p>Stack vs heap, malloc/free, realloc, dynamic arrays, ownership rules, and leaks.</p>
+            </article>
+            <article class="path-card">
+              <span class="path-step">07</span>
+              <h3>Structs &amp; APIs</h3>
+              <p>Records, modularity, header files, encapsulation, and designing interfaces that scale.</p>
+            </article>
+            <article class="path-card">
+              <span class="path-step">08</span>
+              <h3>Files &amp; errors</h3>
+              <p>stdio, errno, perror, file modes, failure handling, and real-world input validation.</p>
+            </article>
+            <article class="path-card">
+              <span class="path-step">09</span>
+              <h3>Debugging &amp; reliability</h3>
+              <p>Sanitizers, asserts, bounds checks, undefined behavior, and proven compiler safety tools.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="explorer" class="section accent">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">Interactive concept explorer</p>
+            <h2>One concept at a time, with a real habit attached.</h2>
+          </div>
+
+          <div class="explorer-layout">
+            <div class="explorer-tabs" id="concept-tabs" aria-label="C learning topics"></div>
+            <article class="concept-card" id="concept-panel" aria-live="polite"></article>
+          </div>
+        </div>
+      </section>
+
+      <section id="lab" class="section">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">Real-world lab</p>
+            <h2>See the difference between correct code and dangerous code.</h2>
+          </div>
+
+          <div class="lab-grid">
+            <article class="lab-card bad">
+              <h3>Dangerous pattern</h3>
+              <pre><code>char *msg = "hello";
+msg[0] = 'H';
+puts(msg);</code></pre>
+              <p>This is a bug: string literals are not modifiable in C. The program may crash or behave unexpectedly.</p>
+            </article>
+            <article class="lab-card good">
+              <h3>Safe version</h3>
+              <pre><code>char msg[] = "hello";
+msg[0] = 'H';
+puts(msg);</code></pre>
+              <p>Here the array is writable. The lifetime is local and the object is owned by this scope.</p>
+            </article>
+            <article class="lab-card warning">
+              <h3>Memory trap</h3>
+              <pre><code>int *a = malloc(sizeof(int));
+if (a == NULL) return 1;
+free(a);
+printf("%d\n", *a);</code></pre>
+              <p>Use-after-free is real undefined behavior. Freeing early does not make the pointer harmless.</p>
+            </article>
+          </div>
+
+          <div class="two-col panel-box">
+            <div>
+              <h3>Compile with safety enabled</h3>
+              <p>Professional C developers compile with warnings and sanitizers. Make this part of your habit.</p>
+              <pre><code>cc -std=c17 -Wall -Wextra -Wpedantic -O2 -fsanitize=address -g prog.c -o prog</code></pre>
+            </div>
+            <div>
+              <h3>What to look for</h3>
+              <ul class="check-list">
+                <li>Uninitialized variables</li>
+                <li>Null pointer dereferences</li>
+                <li>Potential signed/unsigned mistakes</li>
+                <li>Out-of-bounds writes</li>
+                <li>Ignored return values</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="memory" class="section accent-2">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">Memory model</p>
+            <h2>Understand where values live and why lifetimes matter.</h2>
+          </div>
+
+          <div class="memory-layout">
+            <div class="memory-panel">
+              <div class="diagram-header">
+                <h3>Storage view</h3>
+                <div class="diagram-actions">
+                  <button class="button small" data-memory="stack" aria-pressed="true">Stack</button>
+                  <button class="button small secondary" data-memory="heap" aria-pressed="false">Heap</button>
+                </div>
+              </div>
+              <div id="memory-diagram" class="memory-diagram" aria-live="polite"></div>
+            </div>
+
+            <div class="memory-explanation">
+              <h3>Key ideas</h3>
+              <p>
+                C gives you direct control over memory but not automatic safety. The value of a pointer is just
+                an address. Whether it is valid depends on the lifetime and ownership of the pointed-to object.
+              </p>
+              <div class="code-box">
+                <pre><code>int value = 42;
+int *ptr = &amp;value;
+
+printf("value=%d\n", *ptr);</code></pre>
+              </div>
+              <ul>
+                <li>Stack objects usually last until the end of their block.</li>
+                <li>Heap objects live until free() is called, but only if they are still valid.</li>
+                <li>Undefined behavior happens when a program relies on invalid or stale memory.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">Practice that makes skills stick</p>
+            <h2>Do not study C without compiling it.</h2>
+          </div>
+
+          <div class="challenge-grid">
+            <article class="challenge-card">
+              <span class="challenge-tag">beginner</span>
+              <h3>Read and print values</h3>
+              <p>Write a short program using an integer, a double, and a char. Print them with format specifiers matching the types.</p>
+              <button class="button secondary small" data-challenge="format">Hint</button>
+            </article>
+            <article class="challenge-card">
+              <span class="challenge-tag">intermediate</span>
+              <h3>Traverse a string safely</h3>
+              <p>Use pointers to walk a string and count letters, spaces, and digits. Be careful with signed/unsigned character handling.</p>
+              <button class="button secondary small" data-challenge="count">Hint</button>
+            </article>
+            <article class="challenge-card">
+              <span class="challenge-tag">advanced</span>
+              <h3>Dynamic array lifecycle</h3>
+              <p>Allocate memory, validate it, fill it, and free it. Write a version with a helper function and a clean error path.</p>
+              <button class="button secondary small" data-challenge="dynamic">Hint</button>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="resources" class="section accent">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">References and proven sources</p>
+            <h2>Combine manuals, standard docs, and the library itself.</h2>
+          </div>
+
+          <div class="resource-grid">
+            <article class="library-card"><h3>&lt;stdio.h&gt;</h3><p>Formatted output, file streams, and text I/O. Essential for console and file usage.</p></article>
+            <article class="library-card"><h3>&lt;stdlib.h&gt;</h3><p>Memory allocation, conversions, sorting, exit code handling, and runtime helpers.</p></article>
+            <article class="library-card"><h3>&lt;string.h&gt;</h3><p>String manipulation and byte operations. Always check the destination size and null termination.</p></article>
+            <article class="library-card"><h3>&lt;ctype.h&gt;</h3><p>Character classification. Use it for data validation and parsing rather than hand-rolled logic.</p></article>
+            <article class="library-card"><h3>&lt;errno.h&gt;</h3><p>System and library error codes. Check the library contract and preserve errno exactly as required.</p></article>
+            <article class="library-card"><h3>&lt;math.h&gt;</h3><p>Trigonometric and scientific functions. Some platforms require linking the math library.</p></article>
+          </div>
+
+          <div class="manuals">
+            <article class="manual-card">
+              <h3>One source to trust</h3>
+              <ul>
+                <li><a href="https://en.cppreference.com/w/c" target="_blank" rel="noreferrer">cppreference: C reference</a></li>
+                <li><a href="https://www.gnu.org/software/libc/manual/html_node/" target="_blank" rel="noreferrer">GNU libc manual</a></li>
+                <li><a href="https://man7.org/linux/man-pages/" target="_blank" rel="noreferrer">Linux man pages</a></li>
+                <li><a href="https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf" target="_blank" rel="noreferrer">ISO C committee draft (N1570)</a></li>
+                <li><a href="https://www.amazon.com/Programming-Language-2nd-Brian-Kernighan/dp/0131103628" target="_blank" rel="noreferrer">The C Programming Language (K&amp;R)</a></li>
+              </ul>
+            </article>
+
+            <article class="manual-card">
+              <h3>Good habits to train</h3>
+              <div class="todo-stack">
+                <div class="todo good"><strong>Do</strong><p>Initialize, validate, and free resources deliberately and once.</p></div>
+                <div class="todo bad"><strong>Avoid</strong><p>Unchecked string writes, stale pointers, implicit conversions, and undefined behavior.</p></div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="quiz" class="section">
+        <div class="container quiz-wrap">
+          <div class="section-heading">
+            <p class="eyebrow">Quick mastery check</p>
+            <h2>Make the rules stick.</h2>
+          </div>
+
+          <div class="quiz-card">
+            <div id="quiz-progress" class="quiz-progress"></div>
+            <div id="quiz-question" class="quiz-question"></div>
+            <div id="quiz-options" class="quiz-options"></div>
+            <div id="quiz-feedback" class="quiz-feedback" aria-live="polite"></div>
+            <button id="quiz-next" class="button primary" hidden>Next question</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-wrap">
+        <p>C Learning Lab · Build understanding, verify with references, and practice with real code.</p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
