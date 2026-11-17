@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>C Learning Lab | Zero to Expert</title>
-    <meta name="description" content="A serious, interactive C learning web app from basics to memory management, debugging, and safe systems practice." />
+    <title>C Learning Lab | Course App</title>
+    <meta name="description" content="A full C learning platform covering compilation, memory, pointers, libraries, debugging, and safe programming practices." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -13,341 +13,132 @@
   <body>
     <header class="topbar">
       <div class="container nav-wrap">
-        <a class="brand" href="#top" aria-label="C Learning Lab home">
+        <a href="#top" class="brand" aria-label="C Learning Lab home">
           <span class="brand-mark">C</span>
-          <span>Learning Lab</span>
+          <span>C Learning Lab</span>
         </a>
         <nav class="nav" aria-label="Main navigation">
-          <a href="#path">Roadmap</a>
-          <a href="#explorer">Concepts</a>
-          <a href="#lab">Lab</a>
-          <a href="#memory">Memory</a>
-          <a href="#resources">References</a>
-          <a href="#quiz">Quiz</a>
+          <a href="#course">Course</a>
+          <a href="#mistakes">Mistakes</a>
+          <a href="#library">Library</a>
+          <a href="#quizzes">Quiz</a>
         </nav>
       </div>
     </header>
 
-    <main id="top">
-      <section class="hero">
-        <div class="container hero-grid">
-          <div class="hero-copy">
+    <main class="page-shell" id="top">
+      <aside class="sidebar">
+        <div class="sidebar-header">
+          <p class="eyebrow small">Curriculum</p>
+          <h2>Learn C</h2>
+        </div>
+        <div id="module-list" class="module-list" aria-label="Module navigation"></div>
+      </aside>
+
+      <div class="main-panel">
+        <section class="hero-card">
+          <div>
             <p class="eyebrow">From zero to expert systems programmer</p>
-            <h1>Real C, not just documentation.</h1>
-            <p class="lead">
-              This learning site teaches C the way professionals learn it: through the language rules,
-              the standard library, memory behavior, compiler diagnostics, debugging, and the common mistakes
-              that lead to broken programs and undefined behavior.
-            </p>
-            <div class="hero-actions">
-              <a class="button primary" href="#path">Start learning</a>
-              <a class="button secondary" href="#explorer">Explore concepts</a>
-            </div>
-            <ul class="pill-list">
-              <li>Compile &amp; debug</li>
-              <li>Pointers &amp; memory</li>
-              <li>Library and standards</li>
-              <li>Safe habits</li>
-            </ul>
+            <h1>Learn C by understanding the machine, not just syntax.</h1>
+          </div>
+          <div class="hero-meta">
+            <span>34 exercises</span>
+            <span>9 stages</span>
+            <span>Standards + manuals</span>
+          </div>
+        </section>
+
+        <section id="course" class="content-panel">
+          <div id="module-content" aria-live="polite"></div>
+        </section>
+
+        <section id="mistakes" class="section-card">
+          <div class="section-head">
+            <p class="eyebrow">Mistakes library</p>
+            <h2>Common bugs and how professionals avoid them</h2>
           </div>
 
-          <div class="hero-panel">
-            <div class="panel-window">
-              <div class="window-bar"><span></span><span></span><span></span></div>
-              <pre><code>#include &lt;stdio.h&gt;
-#include &lt;stdlib.h&gt;
-
-int main(void) {
-    int *numbers = malloc(3 * sizeof *numbers);
-    if (!numbers) {
-        fprintf(stderr, "malloc failed\n");
-        return 1;
-    }
-
-    numbers[0] = 7;
-    numbers[1] = 11;
-    numbers[2] = 13;
-
-    printf("%d %d %d\n", numbers[0], numbers[1], numbers[2]);
-    free(numbers);
-    return 0;
-}</code></pre>
-            </div>
-            <div class="stats-grid">
-              <div><strong>7</strong><span>core stages</span></div>
-              <div><strong>30+</strong><span>examples</span></div>
-              <div><strong>12</strong><span>common traps</span></div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section accent">
-        <div class="container">
-          <div class="section-heading">
-            <p class="eyebrow">What you will be able to do</p>
-            <h2>From first print to advanced debugging.</h2>
-          </div>
-
-          <div class="info-grid">
-            <article class="mini-card">
-              <h3>Read and fix compiler errors</h3>
-              <p>Learn to compile with warnings, understand diagnostics, and stop treating C like a black box.</p>
+          <div class="mistake-grid">
+            <article class="mistake-card bad">
+              <h3>Uninitialized read</h3>
+              <pre><code>int x;
+printf("%d\\n", x);</code></pre>
+              <p>Reading a variable before assignment is undefined behavior. Always initialize local variables.</p>
             </article>
-            <article class="mini-card">
-              <h3>Understand the memory model</h3>
-              <p>Reason about stack, static, heap, object lifetime, aliasing, and why UB is dangerous.</p>
+            <article class="mistake-card bad">
+              <h3>Buffer overflow</h3>
+              <pre><code>char name[8];
+strcpy(name, "longer-than-expected");</code></pre>
+              <p>String functions without size checks can overwrite adjacent memory. Use bounded functions and capacity checks.</p>
             </article>
-            <article class="mini-card">
-              <h3>Use the standard library correctly</h3>
-              <p>Know when to use stdio, stdlib, string, errno, ctype, math, and how to verify each function contract.</p>
+            <article class="mistake-card bad">
+              <h3>Use-after-free</h3>
+              <pre><code>int *p = malloc(sizeof *p);
+free(p);
+printf("%d\\n", *p);</code></pre>
+              <p>Once freed, the pointer is stale. Keep ownership rules explicit and do not use it afterwards.</p>
             </article>
-            <article class="mini-card">
-              <h3>Write safe, testable code</h3>
-              <p>Check bounds, handle errors, free resources, and document ownership and invariants.</p>
+            <article class="mistake-card good">
+              <h3>Safe pattern</h3>
+              <pre><code>int *p = malloc(sizeof *p);
+if (!p) return 1;
+*p = 42;
+free(p);
+p = NULL;</code></pre>
+              <p>Check allocation, use it, free once, then null the pointer to prevent accidental reuse.</p>
             </article>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section id="path" class="section">
-        <div class="container">
-          <div class="section-heading">
-            <p class="eyebrow">Deliberate curriculum</p>
-            <h2>Learn in the order that makes C click.</h2>
-          </div>
-
-          <div class="path-grid">
-            <article class="path-card">
-              <span class="path-step">01</span>
-              <h3>Program structure</h3>
-              <p>Translation units, compilation, headers, main, return values, and build workflows.</p>
-            </article>
-            <article class="path-card">
-              <span class="path-step">02</span>
-              <h3>Types &amp; operators</h3>
-              <p>Integer sizes, floating-point, char, bool-like patterns, casts, precedence, and overflow.</p>
-            </article>
-            <article class="path-card">
-              <span class="path-step">03</span>
-              <h3>Control flow</h3>
-              <p>if, switch, loops, break/continue, and how to design functions that are easy to reason about.</p>
-            </article>
-            <article class="path-card">
-              <span class="path-step">04</span>
-              <h3>Arrays &amp; strings</h3>
-              <p>Indexing, contiguous memory, null-termination, bounds, and why string functions are subtle.</p>
-            </article>
-            <article class="path-card">
-              <span class="path-step">05</span>
-              <h3>Pointers</h3>
-              <p>Address-of, dereference, const-correctness, arrays vs pointers, pointer arithmetic, and aliasing.</p>
-            </article>
-            <article class="path-card">
-              <span class="path-step">06</span>
-              <h3>Memory management</h3>
-              <p>Stack vs heap, malloc/free, realloc, dynamic arrays, ownership rules, and leaks.</p>
-            </article>
-            <article class="path-card">
-              <span class="path-step">07</span>
-              <h3>Structs &amp; APIs</h3>
-              <p>Records, modularity, header files, encapsulation, and designing interfaces that scale.</p>
-            </article>
-            <article class="path-card">
-              <span class="path-step">08</span>
-              <h3>Files &amp; errors</h3>
-              <p>stdio, errno, perror, file modes, failure handling, and real-world input validation.</p>
-            </article>
-            <article class="path-card">
-              <span class="path-step">09</span>
-              <h3>Debugging &amp; reliability</h3>
-              <p>Sanitizers, asserts, bounds checks, undefined behavior, and proven compiler safety tools.</p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section id="explorer" class="section accent">
-        <div class="container">
-          <div class="section-heading">
-            <p class="eyebrow">Interactive concept explorer</p>
-            <h2>One concept at a time, with a real habit attached.</h2>
-          </div>
-
-          <div class="explorer-layout">
-            <div class="explorer-tabs" id="concept-tabs" aria-label="C learning topics"></div>
-            <article class="concept-card" id="concept-panel" aria-live="polite"></article>
-          </div>
-        </div>
-      </section>
-
-      <section id="lab" class="section">
-        <div class="container">
-          <div class="section-heading">
-            <p class="eyebrow">Real-world lab</p>
-            <h2>See the difference between correct code and dangerous code.</h2>
-          </div>
-
-          <div class="lab-grid">
-            <article class="lab-card bad">
-              <h3>Dangerous pattern</h3>
-              <pre><code>char *msg = "hello";
-msg[0] = 'H';
-puts(msg);</code></pre>
-              <p>This is a bug: string literals are not modifiable in C. The program may crash or behave unexpectedly.</p>
-            </article>
-            <article class="lab-card good">
-              <h3>Safe version</h3>
-              <pre><code>char msg[] = "hello";
-msg[0] = 'H';
-puts(msg);</code></pre>
-              <p>Here the array is writable. The lifetime is local and the object is owned by this scope.</p>
-            </article>
-            <article class="lab-card warning">
-              <h3>Memory trap</h3>
-              <pre><code>int *a = malloc(sizeof(int));
-if (a == NULL) return 1;
-free(a);
-printf("%d\n", *a);</code></pre>
-              <p>Use-after-free is real undefined behavior. Freeing early does not make the pointer harmless.</p>
-            </article>
-          </div>
-
-          <div class="two-col panel-box">
-            <div>
-              <h3>Compile with safety enabled</h3>
-              <p>Professional C developers compile with warnings and sanitizers. Make this part of your habit.</p>
-              <pre><code>cc -std=c17 -Wall -Wextra -Wpedantic -O2 -fsanitize=address -g prog.c -o prog</code></pre>
-            </div>
-            <div>
-              <h3>What to look for</h3>
-              <ul class="check-list">
-                <li>Uninitialized variables</li>
-                <li>Null pointer dereferences</li>
-                <li>Potential signed/unsigned mistakes</li>
-                <li>Out-of-bounds writes</li>
-                <li>Ignored return values</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="memory" class="section accent-2">
-        <div class="container">
-          <div class="section-heading">
-            <p class="eyebrow">Memory model</p>
-            <h2>Understand where values live and why lifetimes matter.</h2>
-          </div>
-
-          <div class="memory-layout">
-            <div class="memory-panel">
-              <div class="diagram-header">
-                <h3>Storage view</h3>
-                <div class="diagram-actions">
-                  <button class="button small" data-memory="stack" aria-pressed="true">Stack</button>
-                  <button class="button small secondary" data-memory="heap" aria-pressed="false">Heap</button>
-                </div>
-              </div>
-              <div id="memory-diagram" class="memory-diagram" aria-live="polite"></div>
-            </div>
-
-            <div class="memory-explanation">
-              <h3>Key ideas</h3>
-              <p>
-                C gives you direct control over memory but not automatic safety. The value of a pointer is just
-                an address. Whether it is valid depends on the lifetime and ownership of the pointed-to object.
-              </p>
-              <div class="code-box">
-                <pre><code>int value = 42;
-int *ptr = &amp;value;
-
-printf("value=%d\n", *ptr);</code></pre>
-              </div>
-              <ul>
-                <li>Stack objects usually last until the end of their block.</li>
-                <li>Heap objects live until free() is called, but only if they are still valid.</li>
-                <li>Undefined behavior happens when a program relies on invalid or stale memory.</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section">
-        <div class="container">
-          <div class="section-heading">
-            <p class="eyebrow">Practice that makes skills stick</p>
-            <h2>Do not study C without compiling it.</h2>
-          </div>
-
-          <div class="challenge-grid">
-            <article class="challenge-card">
-              <span class="challenge-tag">beginner</span>
-              <h3>Read and print values</h3>
-              <p>Write a short program using an integer, a double, and a char. Print them with format specifiers matching the types.</p>
-              <button class="button secondary small" data-challenge="format">Hint</button>
-            </article>
-            <article class="challenge-card">
-              <span class="challenge-tag">intermediate</span>
-              <h3>Traverse a string safely</h3>
-              <p>Use pointers to walk a string and count letters, spaces, and digits. Be careful with signed/unsigned character handling.</p>
-              <button class="button secondary small" data-challenge="count">Hint</button>
-            </article>
-            <article class="challenge-card">
-              <span class="challenge-tag">advanced</span>
-              <h3>Dynamic array lifecycle</h3>
-              <p>Allocate memory, validate it, fill it, and free it. Write a version with a helper function and a clean error path.</p>
-              <button class="button secondary small" data-challenge="dynamic">Hint</button>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section id="resources" class="section accent">
-        <div class="container">
-          <div class="section-heading">
-            <p class="eyebrow">References and proven sources</p>
-            <h2>Combine manuals, standard docs, and the library itself.</h2>
+        <section id="library" class="section-card">
+          <div class="section-head">
+            <p class="eyebrow">Reference stack</p>
+            <h2>Use the manuals with the code</h2>
           </div>
 
           <div class="resource-grid">
-            <article class="library-card"><h3>&lt;stdio.h&gt;</h3><p>Formatted output, file streams, and text I/O. Essential for console and file usage.</p></article>
-            <article class="library-card"><h3>&lt;stdlib.h&gt;</h3><p>Memory allocation, conversions, sorting, exit code handling, and runtime helpers.</p></article>
-            <article class="library-card"><h3>&lt;string.h&gt;</h3><p>String manipulation and byte operations. Always check the destination size and null termination.</p></article>
-            <article class="library-card"><h3>&lt;ctype.h&gt;</h3><p>Character classification. Use it for data validation and parsing rather than hand-rolled logic.</p></article>
-            <article class="library-card"><h3>&lt;errno.h&gt;</h3><p>System and library error codes. Check the library contract and preserve errno exactly as required.</p></article>
-            <article class="library-card"><h3>&lt;math.h&gt;</h3><p>Trigonometric and scientific functions. Some platforms require linking the math library.</p></article>
-          </div>
-
-          <div class="manuals">
-            <article class="manual-card">
-              <h3>One source to trust</h3>
-              <ul>
-                <li><a href="https://en.cppreference.com/w/c" target="_blank" rel="noreferrer">cppreference: C reference</a></li>
-                <li><a href="https://www.gnu.org/software/libc/manual/html_node/" target="_blank" rel="noreferrer">GNU libc manual</a></li>
-                <li><a href="https://man7.org/linux/man-pages/" target="_blank" rel="noreferrer">Linux man pages</a></li>
-                <li><a href="https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf" target="_blank" rel="noreferrer">ISO C committee draft (N1570)</a></li>
-                <li><a href="https://www.amazon.com/Programming-Language-2nd-Brian-Kernighan/dp/0131103628" target="_blank" rel="noreferrer">The C Programming Language (K&amp;R)</a></li>
-              </ul>
+            <article class="resource-card">
+              <h3>stdio.h</h3>
+              <p>File streams, stdout, stderr, printf, scanf, fgets, fopen, fwrite, and error reporting.</p>
             </article>
-
-            <article class="manual-card">
-              <h3>Good habits to train</h3>
-              <div class="todo-stack">
-                <div class="todo good"><strong>Do</strong><p>Initialize, validate, and free resources deliberately and once.</p></div>
-                <div class="todo bad"><strong>Avoid</strong><p>Unchecked string writes, stale pointers, implicit conversions, and undefined behavior.</p></div>
-              </div>
+            <article class="resource-card">
+              <h3>stdlib.h</h3>
+              <p>malloc, calloc, realloc, free, exit, qsort, atoi, atof, and memory-related helpers.</p>
+            </article>
+            <article class="resource-card">
+              <h3>string.h</h3>
+              <p>strcpy, strlen, strcmp, memcpy, memmove, memset. Always check bounds and null-termination.</p>
+            </article>
+            <article class="resource-card">
+              <h3>ctype.h</h3>
+              <p>Character classification and case conversion. Perfect for parsing and validation.</p>
+            </article>
+            <article class="resource-card">
+              <h3>errno.h</h3>
+              <p>errno, perror, strerror, and status checks after library and system calls.</p>
+            </article>
+            <article class="resource-card">
+              <h3>math.h</h3>
+              <p>Trig, exponentials, logs, sqrt, and floating-point operations. Some toolchains need explicit linking.</p>
             </article>
           </div>
-        </div>
-      </section>
 
-      <section id="quiz" class="section">
-        <div class="container quiz-wrap">
-          <div class="section-heading">
-            <p class="eyebrow">Quick mastery check</p>
-            <h2>Make the rules stick.</h2>
+          <div class="links-box">
+            <h3>Proven sources</h3>
+            <ul>
+              <li><a href="https://en.cppreference.com/w/c" target="_blank" rel="noreferrer">cppreference C reference</a></li>
+              <li><a href="https://www.gnu.org/software/libc/manual/html_node/" target="_blank" rel="noreferrer">GNU libc manual</a></li>
+              <li><a href="https://man7.org/linux/man-pages/" target="_blank" rel="noreferrer">Linux manual pages</a></li>
+              <li><a href="https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf" target="_blank" rel="noreferrer">C11 draft N1570</a></li>
+              <li><a href="https://www.amazon.com/Programming-Language-2nd-Brian-Kernighan/dp/0131103628" target="_blank" rel="noreferrer">The C Programming Language</a></li>
+            </ul>
+          </div>
+        </section>
+
+        <section id="quizzes" class="section-card">
+          <div class="section-head">
+            <p class="eyebrow">Check yourself</p>
+            <h2>Short mastery checks</h2>
           </div>
 
           <div class="quiz-card">
@@ -357,13 +148,13 @@ printf("value=%d\n", *ptr);</code></pre>
             <div id="quiz-feedback" class="quiz-feedback" aria-live="polite"></div>
             <button id="quiz-next" class="button primary" hidden>Next question</button>
           </div>
-        </div>
-      </section>
+        </section>
+      </div>
     </main>
 
     <footer class="footer">
       <div class="container footer-wrap">
-        <p>C Learning Lab · Build understanding, verify with references, and practice with real code.</p>
+        <p>Learn the rules, compile the code, and check the references.</p>
       </div>
     </footer>
 
